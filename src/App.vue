@@ -2,7 +2,7 @@
   <div id="app">
     <AddCategory v-if="shouldShowAddCategory" @addCategory="addCategory" />
     <div v-else>
-      <NavBar />
+      <NavBar :categories="categories" @triggerShowAddCategory="triggerShowAddCategory" />
       <div class="container flex">
         <div class="w-1/2">
           <BillsTable />
@@ -61,6 +61,10 @@ export default {
     addCategory(category) {
       this.categories.push(category)
       this.shouldShowAddCategory = false
+    },
+
+    triggerShowAddCategory() {
+      this.shouldShowAddCategory = true
     }
   }
 }
