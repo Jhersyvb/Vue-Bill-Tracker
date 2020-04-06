@@ -8,7 +8,7 @@
           <BillsTable />
         </div>
         <div class="w-1/2">
-          <Chart :bills="activeBills" />
+          <Chart />
         </div>
       </div>
     </div>
@@ -37,7 +37,23 @@ export default {
     return {
       bills: [],
       categories: [],
-      shouldShowAddCategory: true
+      shouldShowAddCategory: false
+    }
+  },
+
+  watch: {
+    categories() {
+      localStorage.setItem('categories', JSON.stringify(this.categories))
+    }
+  },
+
+  mounted() {
+    if (localStorage.getItem('categories')) {
+      this.categories = JSON.parse(localStorage.getItem('categories'))
+    }
+
+    if (!this.categories.length) {
+      this.shouldShowAddCategory = true
     }
   },
 
