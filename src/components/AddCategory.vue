@@ -8,10 +8,10 @@
           <input
             v-model="category"
             placeholder="Add category"
-            class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
           <button
-            class="flex-no-shrink p-2 rounded bg-teal-500 text-white hover:bg-teal-600 focus:outline-none focus:shadow-outline"
+            class="flex-no-shrink p-2 ml-4 rounded bg-teal-500 text-white hover:bg-teal-600 focus:outline-none focus:shadow-outline"
             @click="handleClick"
           >
             Add
