@@ -4,13 +4,19 @@
     <div v-else>
       <AddBill v-if="shouldShowAddBill" :categories="categories" @addBill="addBill" />
       <div v-else>
-        <NavBar :categories="categories" @triggerShowAddCategory="triggerShowAddCategory" />
+        <NavBar
+          :categories="categories"
+          :active-category="activeCategory"
+          @clearActiveCategory="clearActiveCategory"
+          @setActiveCategory="setActiveCategory"
+          @triggerShowAddCategory="triggerShowAddCategory"
+        />
         <div class="container mx-auto flex">
           <div class="w-1/2">
-            <BillsTable :bills="bills" @triggerShowAddBill="triggerShowAddBill" @removeBill="removeBill" />
+            <BillsTable :bills="activeBills" @triggerShowAddBill="triggerShowAddBill" @removeBill="removeBill" />
           </div>
           <div class="w-1/2">
-            <Chart :bills="bills" />
+            <Chart :bills="activeBills" />
           </div>
         </div>
       </div>
@@ -41,7 +47,16 @@ export default {
       bills: [],
       categories: [],
       shouldShowAddCategory: false,
-      shouldShowAddBill: false
+      shouldShowAddBill: false,
+      activeCategory: ''
+    }
+  },
+
+  computed: {
+    activeBills() {
+      return this.bills
+        .filter(bill => (this.activeCategory ? bill.category === this.activeCategory : true))
+        .sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1))
     }
   },
 
@@ -90,6 +105,14 @@ export default {
 
     removeBill(index) {
       this.bills = this.bills.slice(0, index).concat(this.bills.slice(index + 1, this.bills.length))
+    },
+
+    clearActiveCategory() {
+      this.activeCategory = ''
+    },
+
+    setActiveCategory(category) {
+      this.activeCategory = category
     }
   }
 }
