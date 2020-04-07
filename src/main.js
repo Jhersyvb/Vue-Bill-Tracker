@@ -3,6 +3,8 @@ import App from './App.vue'
 
 import '@/assets/css/tailwind.css'
 
+Vue.use(require('vue-moment'))
+
 Vue.config.productionTip = false
 
 new Vue({
