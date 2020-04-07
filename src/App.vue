@@ -109,7 +109,9 @@ export default {
     },
 
     removeBill(index) {
-      this.bills = this.bills.slice(0, index).concat(this.bills.slice(index + 1, this.bills.length))
+      const billFound = this.activeBills[index]
+      const billFoundIndex = this.bills.findIndex(bill => bill === billFound)
+      this.bills = this.bills.slice(0, billFoundIndex).concat(this.bills.slice(billFoundIndex + 1, this.bills.length))
     },
 
     clearActiveCategory() {
