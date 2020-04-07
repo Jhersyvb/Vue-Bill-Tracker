@@ -1,8 +1,13 @@
 <template>
   <div id="app">
-    <AddCategory v-if="shouldShowAddCategory" @addCategory="addCategory" />
+    <AddCategory v-if="shouldShowAddCategory" @addCategory="addCategory" @goBack="shouldShowAddCategory = false" />
     <div v-else>
-      <AddBill v-if="shouldShowAddBill" :categories="categories" @addBill="addBill" />
+      <AddBill
+        v-if="shouldShowAddBill"
+        :categories="categories"
+        @addBill="addBill"
+        @goBack="shouldShowAddBill = false"
+      />
       <div v-else>
         <NavBar
           :categories="categories"
