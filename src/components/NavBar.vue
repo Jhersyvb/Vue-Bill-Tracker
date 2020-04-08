@@ -1,23 +1,21 @@
 <template>
-  <div>
-    <ul class="flex justify-center border-b-4">
-      <li
-        :class="menuItemClass.concat([activeCategory === '' ? 'bg-gray-600' : 'bg-gray-200'])"
-        @click="clearActiveCategory"
-      >
-        All
-      </li>
-      <li
-        v-for="category in categories"
-        :key="category"
-        :class="menuItemClass.concat([activeCategory === category ? 'bg-gray-600' : 'bg-gray-200'])"
-        @click="setActiveCategory(category)"
-      >
-        {{ category }}
-      </li>
-      <li @click="triggerShowAddCategory" :class="menuItemClass.concat(['bg-gray-200'])">➕</li>
-    </ul>
-  </div>
+  <ul class="flex justify-center bg-white border-b-4">
+    <li
+      :class="menuItemClass.concat([activeCategory === '' ? 'bg-gray-600' : 'bg-gray-200'])"
+      @click="clearActiveCategory"
+    >
+      All
+    </li>
+    <li
+      v-for="category in categories"
+      :key="category"
+      :class="menuItemClass.concat([activeCategory === category ? 'bg-gray-600' : 'bg-gray-200'])"
+      @click="setActiveCategory(category)"
+    >
+      {{ category }}
+    </li>
+    <li @click="triggerShowAddCategory" :class="menuItemClass.concat(['bg-gray-200'])">➕</li>
+  </ul>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="h-screen">
     <AddCategory v-if="shouldShowAddCategory" @addCategory="addCategory" @goBack="shouldShowAddCategory = false" />
     <div v-else>
       <AddBill
@@ -17,10 +17,10 @@
           @triggerShowAddCategory="triggerShowAddCategory"
         />
         <div class="container mx-auto flex">
-          <div class="w-1/2">
+          <div class="w-1/2 bg-blue-100">
             <BillsTable :bills="activeBills" @triggerShowAddBill="triggerShowAddBill" @removeBill="removeBill" />
           </div>
-          <div class="w-1/2">
+          <div class="w-1/2 p-4 bg-gray-100">
             <Chart :bills="activeBills" />
           </div>
         </div>
@@ -124,3 +124,9 @@ export default {
   }
 }
 </script>
+
+<style>
+#app {
+  background-color: #eee;
+}
+</style>
